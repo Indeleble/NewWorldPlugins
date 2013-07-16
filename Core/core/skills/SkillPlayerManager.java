@@ -21,34 +21,34 @@ public class SkillPlayerManager extends BukkitRunnable {
 		this.db = db;
 		this.log = log;
 		this.core = core;
-		
-		skillPlayerList = new ArrayList<SkillPlayer>(); 
+
+		skillPlayerList = new ArrayList<SkillPlayer>();
 		this.runTaskTimerAsynchronously(this.core, 500, 500);
 	}
-	
-	public EbeanServer getDatabase(){
+
+	public EbeanServer getDatabase() {
 		return this.db;
 	}
 
 	public void saveDb() {
-		
+
 		log.info("Saving database. Number of players to save: " + skillPlayerList.size());
 		for (SkillPlayer sp : this.skillPlayerList) {
-			
+
 			db.update(sp);
-			//log.info(String.valueOf(sp.getTalaExp()));
-			//log.info(String.valueOf(sp.getTalaLvl()));
+			// log.info(String.valueOf(sp.getTalaExp()));
+			// log.info(String.valueOf(sp.getTalaLvl()));
 		}
 	}
 
-	public void addSkillPlayer(String player) {
+	public void createSkillPlayer(String player) {
 
 		SkillPlayer sp = db.createEntityBean(SkillPlayer.class);
 		sp.setAccountName(player);
 		db.save(sp);
 		this.skillPlayerList.add(sp);
 	}
-	
+
 	public void addSkillPlayer(SkillPlayer player) {
 
 		this.skillPlayerList.add(player);
@@ -112,9 +112,71 @@ public class SkillPlayerManager extends BukkitRunnable {
 
 	@Override
 	public void run() {
-
 		this.saveDb();
+	}
+
+	public void resetPlayer(String name) {
+
+		SkillPlayer sp = this.getSkillPlayer(name);
+
+		this.db.delete(sp.getSkills());
 
 	}
 
+	public void removeSkill(String name, String skillName) {
+
+		SkillPlayer sp = this.getSkillPlayer(name);
+		SkillType skillType = SkillType.getFromString(skillName);
+
+		for (Skill s : sp.getSkills()) {
+
+			if (s.getType().equals(skillType)) {
+				this.db.delete(s);
+				break;
+			}
+		}
+
+	}
+
+	public void addSkillToPlayer(String name, String skillName) {
+
+		SkillPlayer sp = this.getSkillPlayer(name);
+		SkillType skillType = SkillType.getFromString(skillName);
+
+		boolean check = true;
+
+		for (Skill s : sp.getSkills()) {
+
+			if (s.getType().equals(skillType)) {
+				check = false;
+				break;
+			}
+		}
+
+		if (check) {
+			Skill skill = db.createEntityBean(Skill.class);
+			skill.setPlayer(sp);
+			db.save(skill);
+		}
+	}
+
+	public void updateSkillToPlayer(String name, String skillName, String level) {
+		
+		SkillPlayer sp = this.getSkillPlayer(name);
+		SkillType skillType = SkillType.getFromString(skillName);
+		int lvl = Integer.valueOf(level);
+
+
+		for (Skill s : sp.getSkills()) {
+
+			if (s.getType().equals(skillType)) {
+				
+				s.setLevel(lvl);
+				s.setExperience(0);
+				db.update(s);
+				break;
+			}
+		}
+		
+	}
 }

@@ -17,7 +17,10 @@ public class CraftCommands implements CommandExecutor {
 	public CraftCommands(SkillPlayerManager spm) {
 		this.spm = spm;
 	}
-
+	
+	/*
+	 *  /pangolin habilidad experiencia
+	 */
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 

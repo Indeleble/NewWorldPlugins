@@ -21,7 +21,11 @@ public class SkillCommandsBaseListener implements CommandExecutor {
 	public SkillCommandsBaseListener(SkillPlayerManager spm) {
 		this.spm = spm;
 	}
-
+	
+	/*
+	 *  User commands
+	 * 
+	 */
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -123,4 +127,5 @@ public class SkillCommandsBaseListener implements CommandExecutor {
 		}
 		return true;
 	}
+
 }

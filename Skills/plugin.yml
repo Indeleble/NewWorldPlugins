@@ -15,3 +15,8 @@ commands:
       usage: /No permitido
       permission:
       permission-message: Comando no permitido
+   dedodedios:
+      description: Comando no permitido
+      usage: /No permitido
+      permission:
+      permission-message: Comando no permitido

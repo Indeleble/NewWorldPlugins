@@ -36,8 +36,7 @@ public class PlayerListener implements Listener {
 
 		Player player = ev.getPlayer();
 		PermissionUser user = PermissionsEx.getUser(player);
-		
-		
+
 		/*
 		 *  Skill player
 		 */
@@ -53,10 +52,8 @@ public class PlayerListener implements Listener {
 		if (beans == null || beans.size() == 0) {
 
 			player.sendMessage("Bienvenido a Sacra RP, esperamos que lo pases bien");
-//			SkillPlayer sp = new SkillPlayer();
-//			sp.setAccountName(player.getName());
 			
-			spm.addSkillPlayer(player.getName());
+			spm.createSkillPlayer(player.getName());
 			
 			user.addGroup("user");
 

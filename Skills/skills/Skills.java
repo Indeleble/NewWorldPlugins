@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import skills.agricultura.AgriculturaListener;
+import skills.commands.AdminCommands;
 import skills.commands.SkillCommandsBaseListener;
 import skills.construccion.ConstruccionListener;
 import skills.construccion.QuarzPaintListener;
@@ -45,6 +46,7 @@ public class Skills extends JavaPlugin {
 		//Register commands
 		getCommand("skills").setExecutor(new SkillCommandsBaseListener(spm));
 		getCommand("pangolin").setExecutor(new SkillCommandsBaseListener(spm));
+		getCommand("dedodedios").setExecutor(new AdminCommands(spm));
 		
 	}
 
