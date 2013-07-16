@@ -1,0 +1,12 @@
+name: Husbandry
+main: husbandry.Husbandry
+version: 0.1b
+description: Husbandry system
+author: Indeleble
+depend: [ControllableMobsAPI, NWCore]
+commands:
+   lobos:
+      description: Get wolfs
+      usage: /lobos
+      permission: 
+      permission-message:

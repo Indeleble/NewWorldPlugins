@@ -1,0 +1,8 @@
+name: ArmasFuego
+main: armasfuego.ArmasFuego
+version: 1.0
+commands:
+   canon:
+      description: comando para poder usar el cannon.
+      usage: /command
+      aliases: [ca, canon]

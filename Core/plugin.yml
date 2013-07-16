@@ -1,0 +1,7 @@
+name: NWCore
+main: core.Core
+version: 1.0
+description: New World plugins core
+author: Indeleble
+depend: [PermissionsEx]
+database: true

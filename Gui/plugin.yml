@@ -1,0 +1,7 @@
+name: Gui
+main: gui.Gui
+version: 1.0
+commands:
+   canon:
+      description: comando para poder usar la gui
+      usage: /gui

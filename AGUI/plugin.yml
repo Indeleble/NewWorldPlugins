@@ -1,0 +1,6 @@
+name: AGUI
+main: agui.AGUI
+version: 1.0
+description: Not always run
+author: Indeleble
+depend: [Spout]

@@ -1,0 +1,14 @@
+name: Miscelaneo
+main: miscelaneo.Miscelaneo
+version: 1.0
+description: Cosas miscelaneas para un server de rol
+author: Preytor
+commands:
+   dado:
+      description: dice command.
+      permission: 
+      permission-message:
+   moneda:
+      description: flip a coin command.
+      permission: 
+      permission-message:
